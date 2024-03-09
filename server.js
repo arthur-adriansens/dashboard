@@ -8,9 +8,10 @@ class Server {
         fastify.get("/status_check", this.status);
         this.start_server();
     }
-  
+
     async status(request, reply) {
-      return reply.status(200);
+        reply.status(200);
+        return "connected";
     }
 
     start_server() {
