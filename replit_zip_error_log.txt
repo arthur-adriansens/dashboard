@@ -1,0 +1,10 @@
+{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file .cache/.bun/install/cache/@types/bun/1.0.8","time":"2024-03-10T08:39:38Z"}
+{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file .cache/.bun/install/cache/@types/node/20.11.25","time":"2024-03-10T08:39:38Z"}
+{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file .cache/.bun/install/cache/@types/ws/8.5.10","time":"2024-03-10T08:39:38Z"}
+{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file .cache/.bun/install/cache/bun-types/1.0.17","time":"2024-03-10T08:39:38Z"}
+{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file .cache/.bun/install/cache/bun-types/1.0.29","time":"2024-03-10T08:39:38Z"}
+{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file .cache/.bun/install/cache/typescript/5.4.2","time":"2024-03-10T08:39:38Z"}
+{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file .cache/.bun/install/cache/undici-types/5.26.5","time":"2024-03-10T08:39:42Z"}
+{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file .cache/replit/modules/bun-1.0:v21-20240213-3f08513","time":"2024-03-10T08:39:42Z"}
+{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file .cache/replit/modules/replit:v5-20240209-9e3a339","time":"2024-03-10T08:39:42Z"}
+{"error":".zip archives do not support non-regular files","level":"error","msg":"unable to write file node_modules/.bin/loose-envify","time":"2024-03-10T08:39:42Z"}
