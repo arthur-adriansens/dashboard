@@ -2,19 +2,37 @@
 
 import express from "express";
 import cors from "cors";
-const app = express();
-const port = 3000;
+console.log(process.env.test);
 
-app.use(cors());
+class Server {
+    constructor(port) {
+        this.app = express();
+        this.port = port;
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
+        this.get_requests();
+        this.start_server();
+    }
 
-app.get("/check_status", (req, res) => {
-    res.send("connected");
-});
+    start_server() {
+        app.use(cors());
+        app.listen(port, console.log(`Listening on port ${port}`));
+    }
 
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-});
+    get_requests() {
+        app.get("/", (req, res) => {
+            res.send("Hello World!");
+        });
+
+        app.get("/check_status", (req, res) => {
+            res.send("connected");
+        });
+
+        app.get("/unread_mails", (req, res) => {
+            res.send("connected");
+        });
+    }
+
+    get_emails() {}
+}
+
+const server = new Server();
