@@ -14,20 +14,20 @@ class Server {
     }
 
     start_server() {
-        app.use(cors());
-        app.listen(port, console.log(`Listening on port ${port}`));
+        this.app.use(cors());
+        this.app.listen(this.port, console.log(`Listening on port ${this.port}`));
     }
 
     get_requests() {
-        app.get("/", (req, res) => {
+        this.app.get("/", (req, res) => {
             res.send("Hello World!");
         });
 
-        app.get("/check_status", (req, res) => {
+        this.app.get("/check_status", (req, res) => {
             res.send("connected");
         });
 
-        app.get("/unread_mails", (req, res) => {
+        this.app.get("/unread_mails", (req, res) => {
             res.send("connected");
         });
     }
