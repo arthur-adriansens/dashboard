@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 
 class Server {
-    constructor(port) {
+    constructor(port = 3000) {
         this.app = express();
         this.port = port;
 
