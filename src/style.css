@@ -1,0 +1,269 @@
+:root {
+    --centerCircleSize: 100px;
+    --outerCircleSize: 307.5px;
+    --pieceAngle: 60deg;
+    --hoverRotate: 5;
+    --rotate: 0deg;
+
+    --color-primary-100: #F5EFE6;
+    --color-primary-200: #C2A780;
+    --color-primary-300: #8F7042;
+    --color-primary-400: #5C4118;
+    --color-primary-500: #332003;
+    --color-secondary-100: rgb(174, 189, 202, 0.9);
+    --color-secondary-200: #AEBDCA;
+    --color-secondary-300: rgb(158, 172, 176, 0.6);
+    --color-ternary-100: white;
+}
+
+html,
+body {
+    /*prevents scrolling*/
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-primary-100);
+}
+
+@font-face {
+    font-family: "round";
+    src: url(fonts/VarelaRound-Regular.ttf);
+}
+
+@font-face {
+    font-family: "digital";
+    src: url(fonts/digital-7.ttf);
+}
+
+.noselect {
+    user-select: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*.center.top_of_screen {
+    top: 0%;
+}
+
+todo: not like this, just adjust css variables!!!
+
+.top_of_screen>.outerCircle,
+.top_of_screen>.shadow {
+    height: 150px;
+    width: 150px;
+}
+
+.top_of_screen>.centerCircle {
+    height: 50px;
+    width: 50px;
+}
+*/
+
+.icons {
+    animation: fadeIn 1s ease 0s 1 normal forwards;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: repeat(2, 1fr);
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+}
+
+.icons img {
+    transition: filter 1s;
+    height: 35px;
+    position: relative;
+    margin: 10px 10px 5px 10px;
+    -webkit-user-drag: none;
+}
+
+.icons img:hover {
+    filter: brightness(.8);
+}
+
+img#refresh {
+    transform: rotateY(180deg);
+}
+
+.status {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -10%);
+}
+
+.status>p {
+    font-family: "round";
+    font-size: 17px;
+    color: var(--color-secondary-200);
+    text-align: center;
+}
+
+/*animations*/
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes switchClock1 {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-250px);
+    }
+}
+
+@keyframes switchClock2 {
+    0% {
+        opacity: 0;
+        transform: translateY(250px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+        visibility: visible;
+    }
+}
+
+@keyframes switchClock3 {
+    0% {
+        opacity: 0;
+        transform: translateY(-250px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes switchClock4 {
+    0% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(250px);
+        visibility: visible;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(var(--rotate)) skew(var(--pieceAngle));
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 2s ease 0s 1 normal forwards;
+}
+
+/* circles */
+#centerCircle {
+    position: absolute;
+    width: var(--centerCircleSize);
+    height: var(--centerCircleSize);
+    border-radius: var(--centerCircleSize);
+}
+
+.outerCircle {
+    width: var(--outerCircleSize);
+    height: var(--outerCircleSize);
+    border-radius: 50%;
+    background-color: transparent;
+    overflow: hidden;
+    position: absolute;
+}
+
+.shadow {
+    z-index: -1;
+    width: var(--outerCircleSize);
+    height: var(--outerCircleSize);
+    position: absolute;
+    transform-origin: 100% 100%;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(var(--outerCircleSize)/2*-1);
+    margin-left: calc(var(--outerCircleSize)/2*-1);
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 15px;
+    opacity: 0;
+    animation: fadeIn 4s ease 2s 1 normal forwards;
+}
+
+.circlePiece {
+    transform-origin: 100% 100%;
+    position: absolute;
+    width: calc(var(--outerCircleSize)/2);
+    height: calc(var(--outerCircleSize)/2);
+    background-color: var(--color-secondary-100);
+    top: 50%;
+    left: 50%;
+    border-bottom: 2px solid var(--color-secondary-300);
+
+    transition: background-color .5s;
+    margin-top: calc(var(--outerCircleSize)/2*-1);
+    margin-left: calc(var(--outerCircleSize)/2*-1);
+}
+
+
+.circlePiece:hover {
+    background-color: lightblue;
+    transform: scale(2);
+
+}
+
+.switchClock1 {
+    animation: switchClock1 2s ease 0s 1 normal forwards;
+}
+
+.switchClock2 {
+    animation: switchClock2 2s ease 0s 1 normal forwards;
+}
+
+.switchClock3 {
+    animation: switchClock3 2s ease 0s 1 normal forwards;
+}
+
+.switchClock4 {
+    animation: switchClock4 2s ease 0s 1 normal forwards;
+}
+
+#digital {
+    visibility: hidden;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.digitalText {
+    margin: 0;
+    color: var(--color-ternary-100);
+    font-size: 40px;
+    font-family: "digital";
+}

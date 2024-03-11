@@ -1,0 +1,119 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>clocks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="clocks.css">
+</head>
+
+<body onload="startClocks();">
+    <div id="time">
+        <div id="time24">time</div>
+        <div id="time12">time</div>
+
+        <div id="degreeMinutes">degree minutes</div>
+        <div id="degreeHours">degree hours</div>
+        <div id="degreeSeconds">degree seconds</div>
+
+        <div id="percentage">percentage minutes</div>
+        <div id="extraHours">extraHours</div>
+    </div>
+
+    <div id="clocks">
+        <div id="clock_1">
+            <div class="backgroundClock"><img class="clock" src="clock_1/clock2.1.svg"></div>
+            <div class="rotateMinutes"><img class="clock" src="clock_1/clock2.2.svg" /></div>
+            <div class="rotateSeconds"><img class="clock" src="clock_1/clock2.4.svg" /></div>
+            <div class="rotateHours"><img class="clock" src="clock_1/clock2.3.svg" /></div>
+        </div>
+
+        <div style="padding-left: 225px;">
+            <div class="backgroundClock"><img class="clock" src="clock_2/clock2.1.svg"></div>
+            <div class="rotateMinutes"><img class="clock" src="clock_2/clock2.2.svg" /></div>
+            <div class="rotateHours"><img class="clock" src="clock_2/clock2.3.svg" /></div>
+            <div class="rotateSeconds"><img class="clock" src="clock_2/clock2.4.svg" /></div>
+        </div>
+
+        <div style="padding-left: 450px;" onclick="colorClock()">
+            <div class="backgroundClock">
+                <xml version="1.0" encoding="utf-8">
+                    <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+                      <defs>
+                        <filter id="inner-shadow-filter-0" color-interpolation-filters="sRGB" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="inner-shadow 1 0 0 3 0.19 rgba(0,0,0,0.7)">
+                          <feOffset dx="0" dy="0"/>
+                          <feGaussianBlur stdDeviation="3"/>
+                          <feComposite operator="out" in="SourceGraphic"/>
+                          <feComponentTransfer result="choke">
+                            <feFuncA type="linear" slope="0.38"/>
+                          </feComponentTransfer>
+                          <feFlood flood-color="rgba(0,0,0,0.7)" result="color"/>
+                          <feComposite operator="in" in="color" in2="choke" result="shadow"/>
+                          <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+                        </filter>
+                        <filter id="drop-shadow-filter-0" color-interpolation-filters="sRGB" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="drop-shadow 1 10 9 9 1.2 rgba(0,0,0,0.45)">
+                          <feGaussianBlur in="SourceAlpha" stdDeviation="9"/>
+                          <feOffset dx="10" dy="9"/>
+                          <feComponentTransfer result="offsetblur">
+                            <feFuncA id="spread-ctrl" type="linear" slope="2.4"/>
+                          </feComponentTransfer>
+                          <feFlood flood-color="rgba(0,0,0,0.45)"/>
+                          <feComposite in2="offsetblur" operator="in"/>
+                          <feMerge>
+                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic"/>
+                          </feMerge>
+                        </filter>
+                        <linearGradient gradientUnits="userSpaceOnUse" x1="256.363" y1="24.114" x2="256.363" y2="484.584" id="gradient-0" gradientTransform="matrix(1.112515, 0, 0, 1.109022, -43.160341, -26.139616)">
+                          <stop offset="0" style="stop-color: rgba(148, 149, 150, 1)"/>
+                          <stop offset="1" style="stop-color: rgba(97, 98, 99, 1)"/>
+                        </linearGradient>
+                        <filter id="drop-shadow-filter-3" color-interpolation-filters="sRGB" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="drop-shadow 1 -1 1 9 0.59 rgba(0,0,0,0.67)">
+                          <feGaussianBlur in="SourceAlpha" stdDeviation="9"/>
+                          <feOffset dx="-1" dy="1"/>
+                          <feComponentTransfer result="offsetblur">
+                            <feFuncA id="spread-ctrl" type="linear" slope="1.18"/>
+                          </feComponentTransfer>
+                          <feFlood flood-color="rgba(0,0,0,0.67)"/>
+                          <feComposite in2="offsetblur" operator="in"/>
+                          <feMerge>
+                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic"/>
+                          </feMerge>
+                        </filter>
+                      </defs>
+                      <path style="fill: rgb(248, 248, 248); filter: url(#inner-shadow-filter-0);" d="M 256.193 1.14 C 327.247 1.14 388.782 28.919 435.522 75.656 C 482.11 122.547 509.795 184.277 509.795 255.553 C 509.795 326.832 482.106 388.562 435.519 435.452 C 388.778 482.192 327.247 509.966 256.193 509.966 C 185.144 509.966 123.603 482.188 76.86 435.449 C 30.268 388.558 2.58 326.83 2.58 255.551 C 2.58 184.272 29.954 122.102 76.899 75.618 C 123.244 28.524 185.136 1.14 256.193 1.14 Z M 421.37 421.259 C 462.944 379.706 489.793 319.243 489.793 255.551 C 489.793 191.86 462.87 131.48 421.373 89.849 C 379.873 48.215 319.685 21.203 256.193 21.203 C 192.68 21.203 132.834 48.496 91.065 89.783 C 49.908 131.688 22.583 191.843 22.583 255.551 C 22.583 319.261 49.782 379.294 90.941 421.194 C 132.713 462.486 192.68 489.9 256.193 489.9 C 319.685 489.9 379.949 462.965 421.37 421.259 Z"/>
+                      <!--pastelCenter:-->
+                      <path id="pastel" fill="rgb(206, 240, 205)" d="M 257.379 28.622 C 383.391 28.622 485.543 131.11 485.543 257.519 C 485.543 383.93 383.391 486.415 257.379 486.415 C 131.352 486.415 29.201 383.93 29.201 257.519 C 29.201 131.11 131.352 28.622 257.379 28.622 Z"/>
+                      <!--pastelBorder-->
+                      <path id="pastelBorder" style="paint-order: fill; fill-rule: nonzero; fill-opacity: 0.71; fill: rgb(202, 224, 201);" d="M 424.516 90.389 C 381.482 47.162 323.095 21.181 257.426 21.181 C 191.756 21.181 133.351 47.152 90.279 90.378 C 46.949 133.347 20.889 191.638 20.857 257.179 C 20.825 322.717 46.819 381 90.106 423.966 C 133.137 467.194 191.525 493.175 257.196 493.175 C 322.864 493.175 381.27 467.204 424.344 423.978 C 467.675 381.008 493.732 322.718 493.765 257.18 C 493.797 191.639 467.805 133.356 424.516 90.389 Z M 257.201 485.277 C 194.663 485.277 136.816 459.193 95.698 418.391 C 54.835 377.331 28.739 319.595 28.77 257.18 C 28.801 194.762 54.964 137.015 95.866 95.958 C 137.022 55.154 194.885 29.079 257.423 29.079 C 319.957 29.079 377.922 55.027 418.917 95.963 C 459.911 136.899 485.882 194.763 485.852 257.18 C 485.821 319.595 459.657 377.343 418.756 418.4 C 377.598 459.202 319.737 485.277 257.201 485.277 Z" transform="matrix(-0.077565, 0.996987, -0.996987, -0.077565, 533.672545, 20.590207)"/>
+                      <path style="opacity: 0.86; mix-blend-mode: darken; filter: url(#drop-shadow-filter-0); fill: url(#gradient-0); fill-opacity: 0.24;" d="M 422.904 78.441 L 421.503 77.04 C 375.048 30.52 312.806 2.82 242.046 2.82 C 171.288 2.82 109.053 30.52 62.592 77.04 C 15.928 123.353 -11.867 185.401 -11.867 255.938 C -11.867 326.477 15.923 388.518 62.588 434.83 C 109.05 481.353 171.287 509.056 242.046 509.056 C 312.808 509.056 375.048 481.357 421.503 434.834 C 468.172 388.522 495.963 326.475 495.963 255.936 C 495.963 186.105 468.732 124.607 422.904 78.441 Z M 242.046 511.195 C 172.195 511.195 107.059 481.664 61.034 436.319 C 15.547 390.435 -14.015 325.57 -14.015 255.938 C -14.015 186.305 15.612 121.371 61.099 75.491 C 107.129 30.147 172.196 0.678 242.046 0.678 C 311.891 0.678 377.153 29.994 423.034 75.525 C 468.707 121.262 498.11 186.315 498.11 255.938 C 498.11 325.572 468.486 390.507 422.999 436.386 C 376.97 481.727 311.9 511.195 242.046 511.195 Z" transform="matrix(0, 1, -1, 0, 512.711577, 13.866353)" bx:origin="0.514401 0.514402"/>
+                      <path style="mix-blend-mode: darken; filter: url(#drop-shadow-filter-3); fill: rgba(209, 227, 208, 0.23);" d="M 75.261 239.639 C 75.124 118.364 167.173 18.566 285.402 6.223 C 277.269 5.374 269.015 4.933 260.656 4.933 C 130.777 4.933 25.62 110.021 25.766 239.64 C 25.911 369.26 131.305 474.347 261.184 474.347 C 269.543 474.347 277.795 473.905 285.927 473.056 C 167.67 460.712 75.397 360.914 75.261 239.639 Z" transform="matrix(0.98323, 0.182368, -0.182368, 0.98323, 46.316175, -24.402728)"/>
+                    </svg>
+                </xml>
+            </div>
+            <div class="rotateHours"><img class="clock" src="clock_3/clock2.3.svg" /></div>
+            <div class="rotateMinutes"><img class="clock" src="clock_3/clock2.2.svg"/></div>
+            <div class="rotateSeconds"><img class="clock" src="clock_3/clock2.4.svg" /></div>
+        </div>
+
+        <!--<audio controls>
+                <source src="sound.mp3" type="audio/ogg">
+                Your browser does not support the audio tag.
+        </audio>-->
+    </div>
+    
+    <div style="margin: 50px;">
+        <div class="backgroundClock" style="background-color: lightgrey; position: relative; float: left;"></div>
+        <div class="rotateMinutes" style="background-color: blue; position: relative; float: left;"></div>
+        <div class="rotateHours" style="background-color: red; position: relative; float: left;"></div>
+        <div class="rotateSeconds" style="background-color: green; position: relative; float: left;"></div>
+    </div>
+
+    <script src="clocks.js"></script>
+    <script>document.addEventListener("keyup", control);</script>
+</body>
+
+</html>

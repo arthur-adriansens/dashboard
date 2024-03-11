@@ -1,0 +1,63 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="clock/clocks.css" />
+    </head>
+
+    <body class="noselect" onload="startClocks();">
+        <div class="center top_of_screen" id="center">
+            <!--outer circle-->
+            <div class="outerCircle">
+                <div class="circlePiece" style="transform: rotate(0deg) skew(var(--pieceAngle));"></div>
+            </div>
+
+            <!--center circle-->
+            <div class="shadow"></div>
+            <div id="clocks" style="pointer-events: none; overflow: hidden;">
+                <div class="backgroundClock fadeIn">
+                    <img src="clock/official_clock.svg" />
+                </div>
+                <div id="arrows">
+                    <div class="rotateHours fadeIn">
+                        <img class="clock" src="clock/clock_3/clock2.3.svg" draggable="false" />
+                    </div>
+                    <div class="rotateMinutes fadeIn">
+                        <img class="clock" src="clock/clock_3/clock2.2.svg" draggable="false" />
+                    </div>
+                    <div class="rotateSeconds fadeIn">
+                        <img class="clock" src="clock/clock_3/clock2.4.svg" draggable="false" />
+                    </div>
+                </div>
+                <div id="digital">
+                    <p class="digitalText"><span id="hours">00</span>:<span id="minutes">00</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="icons">
+            <!-- <div> -->
+            <img src="icons/user.svg" />
+            <img src="icons/tune.svg" />
+            <!-- </div> -->
+            <!-- <div> -->
+            <img id="fullscreen" src="icons/fullScreen.svg" />
+            <img id="refresh" src="icons/refresh.svg" />
+            <!-- </div> -->
+        </div>
+
+        <div class="status fadeIn">
+            <p id="status" style="display: none;">not connected</p>
+            <p id="server_status">server offline</p>
+        </div>
+
+        <script src="clock/clocks.js"></script>
+        <script src="status.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

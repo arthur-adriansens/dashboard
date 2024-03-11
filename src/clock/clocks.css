@@ -1,0 +1,104 @@
+:root {
+    --degreeMinutes: 675deg;
+    --degreeHours: 405deg;
+    --degreeSeconds: 405deg;
+    --clockWidth: 200px;
+    --clockHeight: 200px;
+
+    --color: rgb(206, 240, 205);
+    /*!no spaces before rgb!*/
+    /*#AEBDCA*/
+}
+
+/*clocks*/
+
+#clocks {
+    position: relative;
+    height: var(--clockHeight);
+    width: var(--clockWidth);
+}
+
+#pastel,
+#pastelBorder {
+    fill: var(--color) !important;
+}
+
+.clock {
+    position: absolute;
+    height: var(--clockHeight);
+    width: var(--clockWidth);
+}
+
+.backgroundClock {
+    position: absolute;
+    height: var(--clockHeight);
+    width: var(--clockWidth);
+}
+
+/*minutes pointer animation*/
+
+.rotateMinutes {
+    position: absolute;
+    height: var(--clockHeight);
+    width: var(--clockWidth);
+    /*background-color: red;*/
+    animation: rotateMinutes 6s cubic-bezier(0.76, 0, 0.24, 1) 0s 1 normal none;
+    transform: rotate(var(--degreeMinutes));
+    /*keep it at it's place after animation*/
+}
+
+@keyframes rotateMinutes {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(var(--degreeMinutes));
+        /*720°(2x360°)-45°*/
+    }
+}
+
+/*hours pointer animation*/
+
+.rotateHours {
+    position: absolute;
+    height: var(--clockHeight);
+    width: var(--clockWidth);
+    /*background-color: blue;*/
+    animation: rotateHours 4s cubic-bezier(0.76, 0, 0.24, 1) 0s 1 normal none;
+    transform: rotate(var(--degreeHours));
+    /*keep it at it's place after animation*/
+}
+
+@keyframes rotateHours {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(var(--degreeHours));
+        /*360°+ 45°*/
+    }
+}
+
+/*seconds pointer animation*/
+
+.rotateSeconds {
+    position: absolute;
+    height: var(--clockHeight);
+    width: var(--clockWidth);
+    /*background-color: blue;*/
+    animation: rotateSeconds 4s cubic-bezier(0.76, 0, 0.24, 1) 0s 1 normal none;
+    transform: rotate(var(--degreeSeconds));
+    /*keep it at it's place after animation*/
+}
+
+@keyframes rotateSeconds {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(var(--degreeSeconds));
+    }
+}
