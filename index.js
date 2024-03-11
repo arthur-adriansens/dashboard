@@ -2,7 +2,6 @@
 
 import express from "express";
 import cors from "cors";
-console.log(process.env.test);
 
 class Server {
     constructor(port) {
@@ -15,7 +14,9 @@ class Server {
 
     start_server() {
         this.app.use(cors());
-        this.app.listen(this.port, console.log(`Listening on port ${this.port}`));
+        this.app.listen(this.port, () => {
+            console.log(`Listening on port ${this.port}`);
+        });
     }
 
     get_requests() {
