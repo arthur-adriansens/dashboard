@@ -76,7 +76,7 @@ class Server {
     async get_emails() {
         const pop3 = new Pop3Command({
             user: process.env.EMAIL_USER,
-            password: process.env.EMAIL_PASSWORD,
+            password: process.env.APP_PASSWORD,
             host: "pop.gmail.com",
             servername: "pop.gmail.com",
             port: 995,
