@@ -34,7 +34,7 @@ class Server {
         });
     }
 
-    async get_emails() {
+    async half_working_get_emails() {
         // for token (see object inside auth.setCredentials) visit https://developers.google.com/oauthplayground/
         const auth = new google.auth.OAuth2(process.env.client_id, process.env.client_secret);
 
@@ -70,6 +70,27 @@ class Server {
         }
 
         return result;
+    }
+
+    async get_emails() {
+        import Pop3Command from "node-pop3";
+
+        const pop3 = new Pop3Command({
+            user: process.env.EMAIL_USER,
+            password: process.env.EMAIL_PASSWORD,
+            host: "pop.gmail.com",
+            servername: "pop.gmail.com",
+            port: 995,
+            tls: true,
+        });
+
+        console.log("getting mail...");
+        const list = await pop3.LIST();
+        console.log(list);
+
+        console.log("quitting...");
+        await pop3.QUIT();
+        console.log("done!");
     }
 }
 
