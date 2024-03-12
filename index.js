@@ -3,6 +3,7 @@
 import express from "express";
 import cors from "cors";
 import { google } from "googleapis";
+import Pop3Command from "node-pop3";
 
 class Server {
     constructor(port = 3000) {
@@ -73,8 +74,6 @@ class Server {
     }
 
     async get_emails() {
-        import Pop3Command from "node-pop3";
-
         const pop3 = new Pop3Command({
             user: process.env.EMAIL_USER,
             password: process.env.EMAIL_PASSWORD,
