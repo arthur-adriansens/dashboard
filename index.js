@@ -2,7 +2,8 @@
 
 import express from "express";
 import cors from "cors";
-import imaps from "imap-simple";
+const Imap = require("imap");
+const inspect = require("util").inspect;
 
 class Server {
     constructor(port = 3000) {
@@ -16,6 +17,7 @@ class Server {
                 user: process.env.EMAIL_USER,
                 password: process.env.APP_PASSWORD,
                 host: "imap.gmail.com",
+                servername: "imap.gmail.com",
                 port: 993,
                 tls: true,
                 authTimeout: 3000,
@@ -53,19 +55,50 @@ class Server {
     }
 
     async get_emails() {
-        imaps.connect(this.email_config).then(function (connection) {
-            return connection.openBox("INBOX").then(function () {
-                return connection.search(this.search_criteria, this.fetch_options).then(function (results) {
-                    var subjects = results.map(function (res) {
-                        return res.parts.filter(function (part) {
-                            return part.which === "HEADER";
-                        })[0].body.subject[0];
+        try {
+            const imap = new Imap(imapConfig);
+            imap.once("ready", () => {
+                imap.openBox("INBOX", false, () => {
+                    imap.search(["UNSEEN", ["SINCE", new Date()]], (err, results) => {
+                        const f = imap.fetch(results, { bodies: "" });
+                        f.on("message", (msg) => {
+                            msg.on("body", (stream) => {
+                                simpleParser(stream, async (err, parsed) => {
+                                    // const {from, subject, textAsHtml, text} = parsed;
+                                    console.log(parsed);
+                                });
+                            });
+                            msg.once("attributes", (attrs) => {
+                                const { uid } = attrs;
+                                // imap.addFlags(uid, ["\\Seen"], () => {
+                                //     // Mark the email as read after reading it
+                                //     console.log("Marked as read!");
+                                // });
+                            });
+                        });
+                        f.once("error", (ex) => {
+                            return Promise.reject(ex);
+                        });
+                        f.once("end", () => {
+                            console.log("Done fetching all messages!");
+                            imap.end();
+                        });
                     });
-
-                    console.log(subjects);
                 });
             });
-        });
+
+            imap.once("error", (err) => {
+                console.log(err);
+            });
+
+            imap.once("end", () => {
+                console.log("Connection ended");
+            });
+
+            imap.connect();
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
