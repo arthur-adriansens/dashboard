@@ -2,19 +2,36 @@
 
 import express from "express";
 import cors from "cors";
-import { google } from "googleapis";
-import Pop3Command from "node-pop3";
+import imaps from "imap-simple";
 
 class Server {
     constructor(port = 3000) {
+        // server setup
         this.app = express();
         this.port = port;
 
-        this.get_requests();
+        // email setup
+        this.email_config = {
+            imap: {
+                user: process.env.EMAIL_USER,
+                password: process.env.APP_PASSWORD,
+                host: "imap.gmail.com",
+                port: 993,
+                tls: true,
+                authTimeout: 3000,
+            },
+        };
+        this.search_criteria = ["UNSEEN"];
+        this.fetch_options = {
+            bodies: ["HEADER", "TEXT"],
+            markSeen: false,
+        };
+
         this.start_server();
     }
 
     start_server() {
+        this.get_requests();
         this.app.use(cors());
         this.app.listen(this.port, () => {
             console.log(`Listening on port ${this.port}`);
@@ -36,18 +53,19 @@ class Server {
     }
 
     async get_emails() {
-        const pop3 = new Pop3Command({
-            user: process.env.EMAIL_USER,
-            password: process.env.APP_PASSWORD, // not usual password! account => 2 step verification => scroll down => app password
-            host: "pop.gmail.com",
-            servername: "pop.gmail.com",
-            port: 995,
-            tls: true,
-        });
+        imaps.connect(this.email_config).then(function (connection) {
+            return connection.openBox("INBOX").then(function () {
+                return connection.search(this.search_criteria, this.fetch_options).then(function (results) {
+                    var subjects = results.map(function (res) {
+                        return res.parts.filter(function (part) {
+                            return part.which === "HEADER";
+                        })[0].body.subject[0];
+                    });
 
-        const list = await pop3.LIST();
-        console.log(list);
-        await pop3.QUIT();
+                    console.log(subjects);
+                });
+            });
+        });
     }
 }
 
