@@ -10,6 +10,7 @@ class Server {
         this.app = express();
         this.port = port;
 
+        app.use(express.static("public"));
         this.get_requests();
         this.start_server();
     }
@@ -22,8 +23,10 @@ class Server {
     }
 
     get_requests() {
+        this.app.use(express.static("src"));
+
         this.app.get("/", (req, res) => {
-            res.send("Hello World!");
+            res.sendFile(path.join(__dirname, "/src/main.html"));
         });
 
         this.app.get("/check_status", (req, res) => {
