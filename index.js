@@ -1,10 +1,8 @@
 /** @format */
 
-import express from "express";
-import cors from "cors";
-import * as path from "path";
-import { google } from "googleapis";
-import Pop3Command from "node-pop3";
+const express = require("express");
+const path = require("path");
+const Pop3Command = require("node-pop3");
 
 class Server {
     constructor(port = 3000) {
@@ -16,7 +14,7 @@ class Server {
     }
 
     start_server() {
-        this.app.use(cors());
+        this.app.use(require("cors"));
         this.app.listen(this.port, () => {
             console.log(`Listening on port ${this.port}`);
         });
@@ -55,4 +53,3 @@ class Server {
 }
 
 const server = new Server();
-await server.get_emails();

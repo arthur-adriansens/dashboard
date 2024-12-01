@@ -38,7 +38,7 @@ for (let i = 1; i < pieces; i++) {
 }
 
 document.querySelector("#fullscreen").onclick = () => {
-    if (document.fullscreen) {
+    if (document.fullscreenElement) {
         document.exitFullscreen();
         document.querySelector("#fullscreen").src = "icons/fullScreen.svg";
     } else {

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <filter id="drop-shadow-filter-1" color-interpolation-filters="sRGB" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="drop-shadow 1 5 9 5 0.36 rgba(134,134,134,0.83)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="5" dy="9"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="0.72"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(134,134,134,0.83)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(237, 237, 238); filter: url(#drop-shadow-filter-1); stroke-width: 6px;" x1="256" y1="256" x2="367.247" y2="146.598"/>
+  <ellipse style="fill: rgb(231, 231, 231); stroke: rgb(175, 189, 174);" cx="256" cy="256" rx="9.85" ry="9.881"/>
+</svg>
