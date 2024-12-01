@@ -2,6 +2,7 @@
 
 import express from "express";
 import cors from "cors";
+import * as path from "path";
 import { google } from "googleapis";
 import Pop3Command from "node-pop3";
 
