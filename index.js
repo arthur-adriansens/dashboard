@@ -14,14 +14,13 @@ class Server {
     }
 
     start_server() {
-        this.app.use(require("cors"));
         this.app.listen(this.port, () => {
             console.log(`Listening on port ${this.port}`);
         });
     }
 
     get_requests() {
-        this.app.use(express.static("src"));
+        this.app.use(express.static("public"));
 
         this.app.get("/", (req, res) => {
             res.sendFile(path.join(__dirname, "/src/main.html"));
