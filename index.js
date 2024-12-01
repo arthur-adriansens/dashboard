@@ -23,7 +23,7 @@ class Server {
         this.app.use(express.static("public"));
 
         this.app.get("/", (req, res) => {
-            res.sendFile(path.join(__dirname, "/src/main.html"));
+            res.sendFile(path.join(__dirname, "/public/main.html"));
         });
 
         this.app.get("/check_status", (req, res) => {
