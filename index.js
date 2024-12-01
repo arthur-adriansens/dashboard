@@ -10,7 +10,6 @@ class Server {
         this.app = express();
         this.port = port;
 
-        app.use(express.static("public"));
         this.get_requests();
         this.start_server();
     }
